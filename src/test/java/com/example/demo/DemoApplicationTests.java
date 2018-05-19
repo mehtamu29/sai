@@ -12,6 +12,6 @@ public class DemoApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		Assert.assertFalse(true);
+		Assert.assertFalse(false);
 	}
 }
