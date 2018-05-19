@@ -17,10 +17,19 @@ public class CustomerRepositoryTests {
     @Autowired
     private TestEntityManager testEntityManager;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
     @Test
     public void saveShouldMapCorrectly() throws Exception {
         Customer customer = new Customer(null, "first", "second", "mumehta@gmail.com");
         Customer cust = testEntityManager.persistAndFlush(customer);
+        BDDAssertions.then(cust.getId()).isNotNull();
+    }
+    @Test
+    public void repositorySaveShouldAlsoWork () {
+        Customer customer = new Customer(null, "first", "second", "mumehta@gmail.com");
+        Customer cust = customerRepository.save(customer);
         BDDAssertions.then(cust.getId()).isNotNull();
     }
 }
