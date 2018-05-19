@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Email;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +23,7 @@ public class Customer {
     @NotNull
     private String second;
 
+    @Email
     @NotNull
     private String email;
 }
