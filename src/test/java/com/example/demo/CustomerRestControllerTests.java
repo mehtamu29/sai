@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 @SpringBootTest
@@ -39,12 +40,28 @@ public class CustomerRestControllerTests {
                 .thenReturn(Optional.of(new Customer(1L, "first", "second", "mumehta@gmail.com")));
 
         MvcResult result = this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/1"))
-        .andExpect(MockMvcResultMatchers.status().is2xxSuccessful())
-        .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-        .andExpect(MockMvcResultMatchers.jsonPath("@.id").value(1L))
+                .andExpect(MockMvcResultMatchers.status().is2xxSuccessful())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(MockMvcResultMatchers.jsonPath("@.id").value(1L))
                 .andReturn();
 
         logger.info(result.getResponse().getContentAsString());
+    }
+
+    @Test
+    public void reoShouldReturnAllCustomers() throws Exception{
+        Mockito.when(customerRepository.findAll())
+                .thenReturn(Arrays.asList(
+                        new Customer(1L, "first", "second", "mumehta@gmail.com"),
+                        new Customer(2L, "first", "second", "mumehta@gmail.com")
+                ));
+
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/customers"))
+                .andExpect(MockMvcResultMatchers.status().is2xxSuccessful())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(MockMvcResultMatchers.jsonPath("@.[0]id").value(1L))
+                .andExpect(MockMvcResultMatchers.jsonPath("@.[1]id").value(2L));
 
     }
+
 }
