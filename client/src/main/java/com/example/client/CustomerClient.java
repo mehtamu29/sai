@@ -6,4 +6,5 @@ import java.util.Collection;
 
 public interface CustomerClient {
     Collection<Customer> getCustomers();
+    Customer getCustomerById(Long l);
 }

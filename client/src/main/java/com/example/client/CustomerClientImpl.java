@@ -26,4 +26,9 @@ public class CustomerClientImpl implements CustomerClient{
         return restTemplate.exchange(this.uri + "/customers", HttpMethod.GET, null, ptr)
                 .getBody();
     }
+
+    public Customer getCustomerById(Long id) {
+        return restTemplate.exchange(this.uri + "/customers/{id}", HttpMethod.GET, null, Customer.class, id)
+                .getBody();
+    }
 }
