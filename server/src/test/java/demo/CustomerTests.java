@@ -1,4 +1,4 @@
-package com.example.demo;
+package demo;
 
 import org.assertj.core.api.BDDAssertions;
 import org.hamcrest.Matchers;
@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class CustomerTests {
 
