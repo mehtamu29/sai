@@ -14,8 +14,7 @@ public class CustomerClientConfiguration {
     }
 
     @Bean
-    CustomerClient client(RestTemplate restTemplate,
-                          @Value("${customer-service.host}") String uri) {
-        return new CustomerClientImpl(restTemplate, uri);
+    CustomerClient client(RestTemplate restTemplate) {
+        return new CustomerClientImpl(restTemplate);
     }
 }

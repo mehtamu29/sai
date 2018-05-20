@@ -1,6 +1,7 @@
 package com.example.client;
 
 import demo.Customer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -12,11 +13,11 @@ import java.util.Collection;
 public class CustomerClientImpl implements CustomerClient{
 
     private final RestTemplate restTemplate;
-    private final String uri;
+    @Value("${customer-server-uri}")
+    private String uri;
 
-    public CustomerClientImpl(RestTemplate restTemplate, String uri) {
+    public CustomerClientImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        this.uri=uri;
     }
 
     @Override
