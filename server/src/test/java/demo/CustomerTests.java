@@ -39,7 +39,7 @@ public class CustomerTests {
     }
     @Test
     public void newInsWithInvalidConstraintsShouldProduceContraintViolations(){
-        Customer customer = new Customer(null,null,null,null);
+        Customer customer = new Customer(0,null,null,null);
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         BDDAssertions.then(violations.size()).isEqualTo(3);
     }

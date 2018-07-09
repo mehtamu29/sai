@@ -15,7 +15,14 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Entity
 public class Customer {
-    @Id
+    public Customer(long id, String first, String second, String email) {
+    	this.id =id;
+    	this.first=first;
+    	this.second=second;
+    	this.email=email;
+	}
+
+	@Id
     @GeneratedValue
     private Long id;
     @NotNull
@@ -26,4 +33,21 @@ public class Customer {
     @Email
     @NotNull
     private String email;
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getFirst() {
+		return first;
+	}
+
+	public String getSecond() {
+		return second;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+    
 }
