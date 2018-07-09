@@ -23,5 +23,12 @@ public class SimpleHashTableTests {
 	public void testHashPutAndGet() {
 		simpleHashTable.put("SAI","Baba");
 		assertEquals("Should find Baba for Sai","Baba",simpleHashTable.get("SAI"));
-	}	
+	}
+	@Test
+	public void testHashPutAndGetDupAndGet() {
+		simpleHashTable.put("SAI","Baba");
+		assertEquals("Should find Baba for Sai","Baba",simpleHashTable.get("SAI"));
+		simpleHashTable.put("SAI","Baba1");
+		assertEquals("Should find Baba for Sai","Baba1",simpleHashTable.get("SAI"));
+	}		
 }
