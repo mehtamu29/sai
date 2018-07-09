@@ -1,7 +1,7 @@
 package com.ubs.sai;
 
 public class SimpleQueueImpl<T> implements SimpleQueue<T> {
-	private static final int CAPACITY = 10;	
+	private static final int CAPACITY = 4;	
 	private int front = 0;
 	private int rear = 0;
 	@SuppressWarnings("unchecked")
@@ -9,10 +9,10 @@ public class SimpleQueueImpl<T> implements SimpleQueue<T> {
 	
 	@Override
 	public void offer(T value) {
-		if (getSize() == 10)
+		if (getSize() == CAPACITY)
 			throw new IllegalStateException();
-		array[rear++] = value;
-		
+		int rearLoc = rear++%CAPACITY;
+		array[rearLoc] = value;		
 	}
 	@Override
 	public int getFront() {
@@ -29,8 +29,9 @@ public class SimpleQueueImpl<T> implements SimpleQueue<T> {
 
 	@Override
 	public T poll() {
-		if (getSize()==0) return null;		
-		T frontElem = array[front++];
+		if (getSize()==0) return null;
+		int frontLoc = front++%CAPACITY;
+		T frontElem = array[frontLoc];
 		return frontElem;		
 	}
 }

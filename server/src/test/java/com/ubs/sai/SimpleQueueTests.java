@@ -67,5 +67,27 @@ public class SimpleQueueTests {
 		assertEquals("First3", queue.poll());
 		assertEquals(0,queue.getSize());
 
-	}	
+	}
+	@Test(expected=IllegalStateException.class)
+	public void testQueueTestAddOnFull() {
+		queue.offer("First");
+		queue.offer("First");
+		queue.offer("First");
+		queue.offer("First");
+		queue.offer("First");
+	}
+	
+	@Test
+	public void testQueueTestRotate() {
+		queue.offer("First");
+		queue.poll();
+		queue.offer("First");
+		queue.poll();
+		queue.offer("First");
+		queue.poll();
+		queue.offer("First");
+		queue.poll();
+		queue.offer("First");
+		assertEquals("First", queue.poll());		
+	}
 }
