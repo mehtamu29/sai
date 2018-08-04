@@ -89,6 +89,6 @@ public class SimpleQueueTests {
 		queue.poll();
 		queue.offer("First");
 		assertEquals("First", queue.poll());
-		System.out.println();
+		System.out.println("Shirdi Sai Baba");
 	}
 }
