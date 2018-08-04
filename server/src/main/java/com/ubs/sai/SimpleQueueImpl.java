@@ -8,10 +8,10 @@ public class SimpleQueueImpl<T> implements SimpleQueue<T> {
 	private T[] array = (T[])(new Object[CAPACITY]);
 	
 	@Override
-	public void offer(T value) {
+	public void offer(final T value) {
 		if (getSize() == CAPACITY)
 			throw new IllegalStateException();
-		int rearLoc = rear++%CAPACITY;
+		final int rearLoc = rear++%CAPACITY;
 		array[rearLoc] = value;		
 	}
 	@Override
@@ -30,8 +30,8 @@ public class SimpleQueueImpl<T> implements SimpleQueue<T> {
 	@Override
 	public T poll() {
 		if (getSize()==0) return null;
-		int frontLoc = front++%CAPACITY;
-		T frontElem = array[frontLoc];
+		final int frontLoc = front++%CAPACITY;
+		final T frontElem = array[frontLoc];
 		return frontElem;		
 	}
 }
