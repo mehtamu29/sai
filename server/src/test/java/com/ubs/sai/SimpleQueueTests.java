@@ -88,6 +88,7 @@ public class SimpleQueueTests {
 		queue.offer("First");
 		queue.poll();
 		queue.offer("First");
-		assertEquals("First", queue.poll());		
+		assertEquals("First", queue.poll());
+		System.out.println();
 	}
 }
