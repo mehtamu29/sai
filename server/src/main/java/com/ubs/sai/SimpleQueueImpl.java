@@ -31,7 +31,7 @@ public class SimpleQueueImpl<T> implements SimpleQueue<T> {
 	public T poll() {
 		if (getSize()==0) return null;
 		final int frontLoc = front++%CAPACITY;
-		T frontElem = array[frontLoc];
+		final T frontElem = array[frontLoc];
 		return frontElem;		
 	}
 }
