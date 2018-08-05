@@ -24,6 +24,7 @@
 		<java.version>1.8</java.version>
 		<checkstyle.failOnViolation>false</checkstyle.failOnViolation>
 		<pmd.failOnViolation>false</pmd.failOnViolation>
+		<findbugs.failOnError>false</findbugs.failOnError>
 	</properties>
 
 	<dependencies>
