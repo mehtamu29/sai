@@ -12,7 +12,13 @@ public class SimpleQueueImpl<T> implements SimpleQueue<T> {
 		if (getSize() == CAPACITY)
 			throw new IllegalStateException();
 		final int rearLoc = rear++%CAPACITY;
-		array[rearLoc] = value;		
+		array[rearLoc] = value;
+
+		if (getSize() == CAPACITY)
+			throw new IllegalStateException();
+		final int rearLoc1 = rear++%CAPACITY;
+		array[rearLoc] = value;
+
 	}
 	@Override
 	public int getFront() {
